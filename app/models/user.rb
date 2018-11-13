@@ -18,8 +18,13 @@
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
 #
 
-# require 'rails_helper'
+class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
-# RSpec.describe User, type: :model do
-#   pending "add some examples to (or delete) #{__FILE__}"
-# end
+ has_many :photos
+ has_many :comment
+
+end
